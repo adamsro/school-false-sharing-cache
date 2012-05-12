@@ -10,8 +10,8 @@ set style data lp
 #set nokey
 #set yrange [80:150]
 
-plot 'out1.out' title '1 thread' lc rgb '#471EFF' lt 1 lw 1.5, \
-	'out2.out' title '2 threads' lc rgb '#1EFFB7' lt 1 lw 1.5, \
-	'out4.out' title '4 threads' lc rgb '#FF1E65' lt 1 lw 1.5, \
-	'out8.out' title '8 threads' lc rgb '#B0D318' lt 1 lw  1.5
+plot 'out1t.out' title '1 thread' lc rgb '#471EFF' lt 1 lw 1.5, \
+	'out2t.out' title '2 threads' lc rgb '#1EFFB7' lt 1 lw 1.5, \
+	'out4t.out' title '4 threads' lc rgb '#FF1E65' lt 1 lw 1.5, \
+	'out8t.out' title '8 threads' lc rgb '#B0D318' lt 1 lw  1.5
 
