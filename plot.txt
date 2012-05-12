@@ -1,7 +1,7 @@
 set term epslatex
 set output "graph1.eps"
-set xlabel "number of threads"
-set ylabel "MegaBodies Compared Per Second" #offset -5.0, 0.0
+set xlabel "integers in padding array"
+set ylabel "MFLOPS/sec" #offset -5.0, 0.0
 set style data lp
 
 #set log x
@@ -10,8 +10,8 @@ set style data lp
 #set nokey
 #set yrange [80:150]
 
-plot 'course_dynamic.out' title 'course, dynamic' lc rgb '#471EFF' lt 1 lw 1.5, \
-	'course_static.out' title 'course, static' lc rgb '#1EFFB7' lt 1 lw 1.5, \
-	'fine_dynamic.out' title 'fine, dynamic' lc rgb '#FF1E65' lt 1 lw 1.5, \
-	'fine_static.out' title 'fine, static' lc rgb '#B0D318' lt 1 lw  1.5
+plot 'out1.out' title '1 thread' lc rgb '#471EFF' lt 1 lw 1.5, \
+	'out2.out' title '2 threads' lc rgb '#1EFFB7' lt 1 lw 1.5, \
+	'out4.out' title '4 threads' lc rgb '#FF1E65' lt 1 lw 1.5, \
+	'out8.out' title '8 threads' lc rgb '#B0D318' lt 1 lw  1.5
 
