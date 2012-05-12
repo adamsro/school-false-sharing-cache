@@ -1,5 +1,5 @@
-Requirements:
-Using OpenMP, compute the total volume under the surface.
-Use a variety of number of subdivisions (NUMS).
-Use a variety of number of threads (NUMT).
-Record the data in units of something that gets larger as speed increases. Joe Parallel used "MegaHeights Computed Per Second", but you can use anything that makes sense.
+http://web.engr.oregonstate.edu/~mjb/cs475/Projects/proj06.html
+
+Cache issues can be insidious. As we discussed in class, False Sharing is a way that multicore programs can significantly lose performance even though it looks like you've done nothing wrong.
+
+In False Sharing, two (or more) cores are writing to variables that live in the same cache line. As soon as each one writes to the cache line, it invalidates the contents of the other, requiring a time-consuming re-load.

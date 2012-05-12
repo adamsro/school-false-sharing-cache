@@ -23,9 +23,9 @@ int main() {
     return 1;
 #endif
     long some_big_number = 1000000000;
-    float isize = sizeof (int);
-    float fsize = sizeof (float);
-    printf("sizeof int %f\t\t sizeof float %f\n\n", isize, fsize);
+//    float isize = sizeof (int);
+//    float fsize = sizeof (float);
+//    printf("sizeof int %f\t\t sizeof float %f\n\n", isize, fsize);
 
     //    int numProcessors = omp_get_num_procs( );
     //    fprintf( stderr, "Have %d processors.\n", numProcessors );
