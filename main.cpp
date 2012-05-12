@@ -10,7 +10,7 @@
 #if !defined (NUM)
 #define NUM 0
 #endif
-#define PADDING 1
+#define PADDING 0
 
 struct s {
     float value;

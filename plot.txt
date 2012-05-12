@@ -14,5 +14,9 @@ set key outside top
 plot 'out1t.out' title '1 thread' lc rgb '#471EFF' lt 1 lw 1.5, \
 	'out2t.out' title '2 threads' lc rgb '#1EFFB7' lt 1 lw 1.5, \
 	'out4t.out' title '4 threads' lc rgb '#FF1E65' lt 1 lw 1.5, \
-	'out8t.out' title '8 threads' lc rgb '#B0D318' lt 1 lw  1.5
+	'out8t.out' title '8 threads' lc rgb '#B0D318' lt 1 lw  1.5, \
+    'out1p.out' title '1 thread private' lc rgb '#343434' lt 1 lw 1.5, \
+    'out2p.out' title '2 threads private' lc rgb '#5B5B5B' lt 1 lw 1.5, \
+    'out4p.out' title '4 threads private' lc rgb '#7C7C7C' lt 1 lw 1.5
+
 

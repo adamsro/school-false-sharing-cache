@@ -1,7 +1,7 @@
-all: main.o pdf
+all: main.o #pdf
 
 main.o:	main.cpp 
-		g++ -g -DNUMT=8 -o main main.cpp -fopenmp -lm
+		g++ -g -DNUMT=4 -o main main.cpp -fopenmp -lm
 
 clean:
 	rm -rf *o 
