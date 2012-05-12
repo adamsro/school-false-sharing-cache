@@ -1,0 +1,17 @@
+set term epslatex
+set output "graph1.eps"
+set xlabel "number of threads"
+set ylabel "MegaBodies Compared Per Second" #offset -5.0, 0.0
+set style data lp
+
+#set log x
+#set terminal latex enhanced color
+#set output "plot.tex"
+#set nokey
+#set yrange [80:150]
+
+plot 'course_dynamic.out' title 'course, dynamic' lc rgb '#471EFF' lt 1 lw 1.5, \
+	'course_static.out' title 'course, static' lc rgb '#1EFFB7' lt 1 lw 1.5, \
+	'fine_dynamic.out' title 'fine, dynamic' lc rgb '#FF1E65' lt 1 lw 1.5, \
+	'fine_static.out' title 'fine, static' lc rgb '#B0D318' lt 1 lw  1.5
+

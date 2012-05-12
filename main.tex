@@ -1,0 +1,153 @@
+% Robert Adams CS 475
+
+\documentclass[letterpaper,10pt]{article} %twocolumn titlepage 
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{alltt}
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+
+\usepackage{geometry}
+\geometry{margin=1in, textheight=8.5in} %textwidth=6in
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+
+\def\name{Robert Adams}
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+    colorlinks = true,
+    urlcolor = black,
+    pdfauthor = {\name},
+    pdfkeywords = {cs745},
+    pdftitle = {CS 475 Project 5: OpenMP: N-body Problem},
+    pdfsubject = {CS 475 Project 5},
+    pdfpagemode = UseNone,
+}
+
+
+\begin{document}
+\title{CS 475 Project 5: OpenMP: N-body Problem}
+\author{Robert Adams}
+\maketitle
+
+
+
+\section{Results}
+
+The drop at around 8 threads is definitely of interest here.
+This pattern seems to follow the class example of a program with cache misses.
+ This seems to be an issue with the for loop on line 114. With these
+ lines commented out the program shows more expected results without any dips. 
+
+
+I would guess that the abysmal performance on the fine threading
+above 2 threads may be because the overhead of constantly creating 
+and joining threads exceeds the benefit of the time savings which they 
+are able to give. There seems to be a sweet point for the amount of
+work each thread should be given to maximize performance. 
+
+
+The directive for the course threading placed above the for loop with int i looks as follows:
+
+\verb|#|pragma omp parallel for default(none) private(Bodies) schedule(dynamic) 
+
+The directive for the fine threading looks like:
+
+\verb|#|pragma omp parallel for default(none) private(Bodies) shared(bi) reduction(+:fx, fy, fz) schedule(static)
+
+
+\subsection{System Specifications}
+
+access.engr.oregonstate.edu   lscpu:
+
+Architecture:          x86\verb|_|64
+
+CPU op-mode(s):        32-bit, 64-bit
+
+Byte Order:            Little Endian
+
+CPU(s):                8
+
+On-line CPU(s) list:   0-7
+
+Thread(s) per core:    1
+
+Core(s) per socket:    4
+
+CPU socket(s):         2
+
+NUMA node(s):          1
+
+Vendor ID:             GenuineIntel
+
+CPU family:            6
+
+Model:                 23
+
+Stepping:              6
+
+CPU MHz:               3166.000
+
+BogoMIPS:              6317.53
+
+Virtualization:        VT-x
+
+L1d cache:             32K
+
+L1i cache:             32K
+
+L2 cache:              6144K
+
+NUMA node0 CPU(s):     0-7
+
+
+\begin{figure} [ht]
+    \centering
+    \input{graph1.tex}
+    %\caption{Speed of height calculations performed on a subdivided surface} 
+    \label{runtimes}
+\end{figure}
+
+\begin{table}  [ht]
+    \centering
+        \begin{tabular}{lllll}
+%        \hline
+          threads & course, dynamic & course, static & fine, dynamic & fine, static \\ \hline
+          1       & 63.876          & 63.143         & 24.969        & 50.671       \\ 
+          2       & 99.098          & 100.351        & 10.835        & 23.741       \\ 
+          4       & 160.353         & 152.559        & 10.849        & 17.366       \\ 
+          6       & 202.808         & 184.358        & 8.774         & 1.173        \\ 
+          8       & 15.103          & 53.048         & 0.744         & 12.640       \\ 
+           10      & 89.957          & 75.693         & 1.460         & 1.480        \\ 
+           12      & 83.028          &  66.268        & 1.246         & 1.302        \\ 
+           14      & 81.970          & 53.221         & 1.119         & 1.127        \\ 
+           16      & 73.886          & 48.399         & 0.999         & 1.021        \\
+%        \hline
+            \end{tabular}
+    \end{table}
+
+%\begin{figure} [ht]
+    %\centering
+    %\input{plot_difference.tex}
+    %\caption{A run with with percent speedup calculated. simd mflops/non-simd mflops} 
+    %\label{runtimes}
+%\end{figure}
+
+
+
+    \end{document}

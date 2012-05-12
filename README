@@ -1,0 +1,5 @@
+Requirements:
+Using OpenMP, compute the total volume under the surface.
+Use a variety of number of subdivisions (NUMS).
+Use a variety of number of threads (NUMT).
+Record the data in units of something that gets larger as speed increases. Joe Parallel used "MegaHeights Computed Per Second", but you can use anything that makes sense.
