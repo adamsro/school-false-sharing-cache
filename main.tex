@@ -30,18 +30,18 @@
 \def\name{Robert Adams}
 %% The following metadata will show up in the PDF properties
 \hypersetup{
-    colorlinks = true,
-    urlcolor = black,
-    pdfauthor = {\name},
-    pdfkeywords = {cs745},
-    pdftitle = {CS 475 Project 5: OpenMP: N-body Problem},
-    pdfsubject = {CS 475 Project 5},
-    pdfpagemode = UseNone,
+	colorlinks = true,
+	urlcolor = black,
+	pdfauthor = {\name},
+	pdfkeywords = {cs745},
+	pdftitle = 	{CS 475 Project 6: False Sharing},
+pdfsubject = {CS 475 Project 6},
+	pdfpagemode = UseNone,
 }
 
 
 \begin{document}
-\title{CS 475 Project 5: OpenMP: N-body Problem}
+\title{CS 475 Project 6: False Sharing} 
 \author{Robert Adams}
 \maketitle
 
@@ -51,8 +51,8 @@
 
 The drop at around 8 threads is definitely of interest here.
 This pattern seems to follow the class example of a program with cache misses.
- This seems to be an issue with the for loop on line 114. With these
- lines commented out the program shows more expected results without any dips. 
+This seems to be an issue with the for loop on line 114. With these
+lines commented out the program shows more expected results without any dips. 
 
 
 I would guess that the abysmal performance on the fine threading
@@ -117,37 +117,37 @@ NUMA node0 CPU(s):     0-7
 
 
 \begin{figure} [ht]
-    \centering
-    \input{graph1.tex}
-    %\caption{Speed of height calculations performed on a subdivided surface} 
-    \label{runtimes}
+	\centering
+	\input{graph1.tex}
+	%\caption{Speed of height calculations performed on a subdivided surface} 
+	\label{runtimes}
 \end{figure}
 
 \begin{table}  [ht]
-    \centering
-        \begin{tabular}{lllll}
-%        \hline
-          threads & course, dynamic & course, static & fine, dynamic & fine, static \\ \hline
-          1       & 63.876          & 63.143         & 24.969        & 50.671       \\ 
-          2       & 99.098          & 100.351        & 10.835        & 23.741       \\ 
-          4       & 160.353         & 152.559        & 10.849        & 17.366       \\ 
-          6       & 202.808         & 184.358        & 8.774         & 1.173        \\ 
-          8       & 15.103          & 53.048         & 0.744         & 12.640       \\ 
-           10      & 89.957          & 75.693         & 1.460         & 1.480        \\ 
-           12      & 83.028          &  66.268        & 1.246         & 1.302        \\ 
-           14      & 81.970          & 53.221         & 1.119         & 1.127        \\ 
-           16      & 73.886          & 48.399         & 0.999         & 1.021        \\
-%        \hline
-            \end{tabular}
-    \end{table}
+	\centering
+	    \begin{tabular}{lllll}
+		padding \verb|#| & 1 thread & 2 threads & 4 threads & 8 threads\\ \hline
+			 1 & 336.645 & 50.052 & 188.42 & 203.578\\ 
+			 3 & 340.671 & 681.512 & 281.237 & 311.9\\ 
+			 5 & 325.773 & 60.015 & 229.057 & 35.603\\ 
+			 7 & 341.345 & 679.65 & 398.798 & 417.384\\ 
+			 9 & 328.013 & 136.746 & 364.229 & 81.708\\ 
+			11 & 325.928 & 651.105 & 73.53 & 337.075\\ 
+			13 & 339.033 & 665.709 & 454.8 & 113.712\\ 
+			15 & 340.628 & 681.347 & 1344.519 & 1331.212\\ 
+			17 & 326.951 & 134.005 & 1307.239 & 1267.278\\ 
+			19 & 328.484 & 655.423 & 1303.629 & 1275.71\\ 
+			21 & 239.837 & 117.827 & 954.894 & 940.978\\ 
+			23 & 326.057 & 650.68 & 1299.702 & 1273.06\\ 
+			25 & 229.234 & 457.623 & 913.268 & 167.211\\ 
+			27 & 338.9 & 676.013 & 1345.728 & 248.123\\ 
+			29 & 328.93 & 639.918 & 1310.198 & 1276.758\\ 
+			31 & 340.363 & 680.837 & 1351.127 & 1333.053\\ 
+			33 & 329.059 & 654.269 & 210.283 & 1286.229\\ 
+			35 & 328.183 & 655.643 & 1286.239 & 202.212\\ 
+			37 & 240.275 & 118.158 & 955.255 & 170.186\\ 
+			39 & 328.201 & 655.942 & 1303.457 & 255.908\\ 
+		    \end{tabular}
+	\end{table}
 
-%\begin{figure} [ht]
-    %\centering
-    %\input{plot_difference.tex}
-    %\caption{A run with with percent speedup calculated. simd mflops/non-simd mflops} 
-    %\label{runtimes}
-%\end{figure}
-
-
-
-    \end{document}
+	\end{document}

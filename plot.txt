@@ -3,6 +3,7 @@ set output "graph1.eps"
 set xlabel "integers in padding array"
 set ylabel "MFLOPS/sec" #offset -5.0, 0.0
 set style data lp
+set key outside top 
 
 #set log x
 #set terminal latex enhanced color
